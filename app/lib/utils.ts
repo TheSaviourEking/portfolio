@@ -1,8 +1,8 @@
-export const formateDate = (datestr: Date): String => {
+export const formateDate = (dateStr: Date): String => {
     // const date = new Date('2020-02-12');
     const options = { day: '2-digit', month: 'short', year: 'numeric' };
-    const formattedDate = datestr.toLocaleDateString('en-GB', options);
-    console.log(formattedDate); // "12 Feb 2020"
+    const formattedDate = dateStr.toLocaleDateString('en-US', options);
+    // console.log(formattedDate); // "12 Feb 2020"
     return formattedDate;
 
     // const date = new Date(dateStr);
@@ -11,6 +11,6 @@ export const formateDate = (datestr: Date): String => {
     //     month: 'short',
     //     year: 'numeric',
     // };
-    // const formatter = new Intl.DateTimeFormat(locale, options);
+    // const formatter = new Intl.DateTimeFormat('locale', options);
     // return formatter.format(date);
 }

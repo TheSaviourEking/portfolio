@@ -34,3 +34,7 @@ export async function fetchRecentPosts() {
 export async function fetchRecentProjects() {
     return projects.slice(0, 3);
 }
+
+export async function fetchAllPosts() {
+    return posts;
+}

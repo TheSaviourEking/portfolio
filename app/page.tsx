@@ -81,7 +81,6 @@ const RecentPost = () => {
   )
 };
 
-
 const FeaturedWorks = () => {
   const [recentProjects, setRecentProjects] = useState([]);
   const isMediumOrAbove = useScreenSize();
@@ -94,7 +93,7 @@ const FeaturedWorks = () => {
     }
     fetchProjects();
   }, []);
-  
+
   return (
     <div className="py-10">
       <div className="flex justify-between items-center">
