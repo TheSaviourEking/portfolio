@@ -4,11 +4,9 @@ import React from 'react'
 
 const WorkCard = ({ title = 'title here' }) => {
     return (
-        <Link href={'/2'}>
+        <Link href={`/projects/${title}`}>
             <div className='flex flex-col md:flex-row gap-10 border-b-2 p-4'>
-                {/* <div>
-
-            </div> */}
+            
                 <Image className='basis lg:basis-1/4' src={'/vercel.svg'} alt='hello' width={500} height={400} />
                 <div className='flex flex-col gap-4 basis1/2 lg:basis-4/4'>
                     <h3 className='font-bold text-3xl'>{title}</h3>
