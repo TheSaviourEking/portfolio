@@ -21,7 +21,7 @@ export default function RootLayout({
       {/* <body className={inter.className}>{children}</body> */}
       <body className={`${inter.className} p-4 container mx-auto flex flex-col min-h-screen`}>
         <NavBar />
-        <main className="mt-6 md:mt-32 text-text container flex-grow px-4 md:px-0">
+        <main className="mt-20 md:mt-10 text-text container flex-grow px-4 md:px-0">
           {children}
         </main>
         <Footer />

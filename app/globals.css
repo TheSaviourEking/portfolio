@@ -39,7 +39,7 @@
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
 } */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
 
   :root {
     --primary: var(--primary-dark);
@@ -50,7 +50,7 @@
     --cta: var(--cta-dark);
     --warning: var(--warning-dark);
   }
-}
+} */
 
 .dark {
   --primary: var(--primary-dark);

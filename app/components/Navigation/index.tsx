@@ -25,7 +25,7 @@ const NavBar = () => {
     };
 
     return (
-        <nav className="p-4 md:p-0">
+        <nav className="bg-background shadow-md fixed top-0 left-0 right-0 p-4 md:py-4 md:relative md:shadow-none">
             <div className="flex justify-between items-center">
                 <div className="text-text text-xl font-bold">
                     <NavLink href="/" className="text-text hover:text-accent">Saviour</NavLink>
@@ -42,7 +42,7 @@ const NavBar = () => {
                 </button>
 
                 <ul className="hidden md:flex space-x-4 text-text">
-                    <li><NavLink href="/project">Project</NavLink></li>
+                    <li><NavLink href="/projects">Project</NavLink></li>
                     <li><NavLink href="/blog">Blog</NavLink></li>
                     <li><NavLink href="/contact">Contact</NavLink></li>
                 </ul>
@@ -50,7 +50,7 @@ const NavBar = () => {
 
             {isMenuOpen && (
                 <ul className="mt-4 space-y-2 md:hidden">
-                    <li><NavLink href="/project">Project</NavLink></li>
+                    <li><NavLink href="/projects">Project</NavLink></li>
                     <li><NavLink href="/blog">Blog</NavLink></li>
                     <li><NavLink href="/contact">Contact</NavLink></li>
                 </ul>
