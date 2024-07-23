@@ -1,11 +1,12 @@
-'use client';
+// 'use client';
 
 import { Heebo } from "next/font/google";
 import ProfilePhoto from "./components/ProfilePhoto";
 import Link from "next/link";
 import PostCard from "./components/PostCard";
 import WorkCard from "./components/WorkCard";
-import { posts } from "./lib/data";
+// import handler, { posts } from "./lib/data";
+import { articleHandler } from "./lib/actions";
 import { useEffect, useState } from "react";
 import { fetchRecentPosts, fetchRecentProjects } from "./lib/actions";
 import useScreenSize from "./hooks/useScreenSize";
@@ -54,58 +55,65 @@ interface Post {
   category: string;
 }
 
-const RecentPost = () => {
-  const [recentPosts, setRecentPosts] = useState<Post[]>([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const posts = await fetchRecentPosts();
-      setRecentPosts(posts);
-    };
-
-    fetchData();
-  }, []);
+const RecentPost = async () => {
+  const posts = await articleHandler();
 
   return (
-    <div className="flex flex-col gap-3 mt-8 md:mt-2">
-      <div className="flex justify-between items-center">
-        <span className="text-xl">Recent Post</span>
-        <Link className="hidden md:block text-base" href="/blog">view all</Link>
-      </div>
-      <div className="flex flex-wrap flex-col md:flex-row items-center justify-center gap-4 ">
-        {recentPosts && recentPosts.length > 0 && recentPosts.map(post => (
-          <PostCard key={crypto.randomUUID()} post={post} />
-        ))}
-      </div>
-      <Link className="block md:hidden text-base mt-4 md:mt-0" href="/blog">view all</Link>
-    </div>
+    <>
+      {posts && posts.length > 0 && (
+        <div className="flex flex-col gap-3 mt-8 md:mt-2">
+          <div className="flex justify-between items-center">
+            <span className="text-xl">Recent {posts.length === 1 ? 'Post' : 'Posts'}</span>
+            <Link className="hidden md:block text-base" href="/blog">view all</Link>
+          </div>
+          {/* <div className="flex flex-wrap flex-col md:flex-row items-center justify-center gap-4 ">
+            <div className="flex flex-wrap gap-4">
+              {posts.map(post => (
+                <PostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </div> */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {posts.map(post => (
+              <PostCard key={post.id} post={post} />
+            ))}
+          </div>
+          <Link className="block md:hidden text-base mt-4 md:mt-0" href="/blog">view all</Link>
+        </div>
+      )}
+    </>
   )
 };
 
 const FeaturedWorks = () => {
-  const [recentProjects, setRecentProjects] = useState([]);
-  const isMediumOrAbove = useScreenSize();
-  const numberOfProjectsToDisplay = isMediumOrAbove ? 3 : 1;
+  // const [recentProjects, setRecentProjects] = useState([]);
+  // const isMediumOrAbove = useScreenSize();
+  // const numberOfProjectsToDisplay = isMediumOrAbove ? 3 : 1;
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const projects = await fetchRecentProjects();
-      setRecentProjects(projects);
-    }
-    fetchProjects();
-  }, []);
+  // useEffect(() => {
+  //   const fetchProjects = async () => {
+  //     const projects = await fetchRecentProjects();
+  //     setRecentProjects(projects);
+  //   }
+  //   fetchProjects();
+  // }, []);
 
   return (
-    <div className="py-10">
-      <div className="flex justify-between items-center">
-        <span className="text-xl">Featured Works</span>
-        <Link className="hidden md:block text-base" href="/project">view all</Link>
-      </div>
-      <div className="flex flex-wrap flex-col md:flex-row items-center justify-center gap-4 mt-2">
-        {recentProjects && recentProjects.length > 0 && recentProjects.slice(0, numberOfProjectsToDisplay).map((project) => (
-          <WorkCard key={crypto.randomUUID()} project={project} />
-        ))}
-      </div>
-      <Link className="block md:hidden text-base mt-4 md:mt-0" href="/project">view all</Link>
-    </div>
+    <>
+      {/* {recentProjects && recentProjects.length > 0 && (
+        <div className="py-10">
+          <div className="flex justify-between items-center">
+            <span className="text-xl">Featured {recentProjects.length === 1 ? 'Work' : 'Works'}</span>
+            <Link className="hidden md:block text-base" href="/projects">view all</Link>
+          </div>
+          <div className="flex flex-wrap flex-col md:flex-row items-center justify-center gap-4 mt-2">
+            {recentProjects && recentProjects.length > 0 && recentProjects.slice(0, numberOfProjectsToDisplay).map((project) => (
+              <WorkCard key={crypto.randomUUID()} project={project} />
+            ))}
+          </div>
+          <Link className="block md:hidden text-base mt-4 md:mt-0" href="/projects">view all</Link>
+        </div>
+      )} */}
+    </>
   )
 }
