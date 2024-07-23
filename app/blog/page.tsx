@@ -1,18 +1,19 @@
-'use client';
+// 'use client';
 
 import React, { useEffect, useState } from 'react'
 import PostCard from '../components/PostCard'
-import { fetchAllPosts } from '../lib/actions';
+import { articleHandler, fetchAllPosts } from '../lib/actions';
 
-const page = () => {
-  const [allPosts, setAllPosts] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const posts = await fetchAllPosts();
-      setAllPosts(posts);
-    };
-    fetchData();
-  }, [])
+const page = async () => {
+  // const [allPosts, setAllPosts] = useState([]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const posts = await fetchAllPosts();
+  //     setAllPosts(posts);
+  //   };
+  //   fetchData();
+  // }, [])
+  const allPosts = await articleHandler();
   return (
     <>
       <h2 className='page-title'>Blog</h2>
