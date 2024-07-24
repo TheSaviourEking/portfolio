@@ -1,4 +1,13 @@
 import { notFound } from 'next/navigation';
+import { state } from '@/store';
+import ProjectImage from '@/app/components/WorkCard/projectImage';
+import Image from 'next/image';
+import { projectsHandler } from '@/app/lib/actions';
+import { Metadata } from 'next';
+
+export const metadata: Metadata={
+    title: 'Projects'
+  }
 
 interface PageProps {
     params: {
@@ -6,33 +15,33 @@ interface PageProps {
     }
 }
 
-async function getProject(title: string) {
-    // Fetch project data here
-    // This is just a placeholder
-    return { title, description: `This is the ${title} project` }
-}
-
-// export default async function ProjectPage({ params }: PageProps) {
-//     const project = await getProject(params.title)
-
-//     if (!project) {
-//         notFound()
-//     }
-
-//     return (
-//         <div>
-//             <h1>Project: {project.title}</h1>
-//             <p>{project.description}</p>
-//             {/* Add more project content here */}
-//         </div>
-//     )
-// }
-
 export default async function ProjectPage(props) {
-    console.log(props, 'props')
+    const { title } = props.params;
+    const projects = await projectsHandler();
+    const foundProject = projects.find(project => project.name === title);
+    console.log(foundProject, 'iiiiiiiiiiiiiiiii');
+
+    if (!foundProject) return (notFound());
+
     return (
-        <div>
-            hello
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+            <div className='basis-none md:basis-1/4 flex'>
+                <ProjectImage name={title} />
+            </div>
+            <div className='col-spa flex flex-col gap-4 justify-between p-4'>
+                <div className='flex items-center gap-2'>
+                    <a href={foundProject.homepage} target="_blank" rel="noopener noreferrer"><span className='text-2xl underline decoration-slice'>{foundProject.name}</span></a> by <a href={foundProject.owner.html_url} target="_blank" rel="noopener noreferrer"><span className='text-2xl'>{foundProject.owner.login}</span></a>
+                    <Image className='rounded-full' src={foundProject.owner.avatar_url} width={100} height={100} alt='saviour eking' />
+                </div>
+                {foundProject.description}
+                <p>Main Language: {foundProject.language}</p>
+                <div className='flex w-full gap-4'>
+                    <a className='project-links' href={foundProject.homepage} target="_blank" rel="noopener noreferrer">LifeLink</a>
+                    <a className='project-links' href={foundProject.url} target="_blank" rel="noopener noreferrer">Github Repository</a>
+                </div>
+            </div>
+
         </div>
     )
 }
+//homepage
