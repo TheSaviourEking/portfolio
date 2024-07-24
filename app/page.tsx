@@ -8,18 +8,18 @@ import WorkCard from "./components/WorkCard";
 import { articleHandler, projectsHandler } from "./lib/actions";
 import useScreenSize from "./hooks/useScreenSize";
 import ProjectList from "./components/ProjectList";
-import { makeStore } from "@/store";
-import { fetchProjects } from "@/store/projects/projectsSlice";
+import { Metadata } from "next";
 
 const heebo = Heebo({ weight: ['700'], subsets: ['latin'] })
 
+export const metadata: Metadata = {
+  title: 'Home'
+}
+
 export default async function Home() {
-  const store = makeStore();
-  await store.dispatch(fetchProjects());
-  // console.log('Redux Store State:', JSON.stringify(store.getState(), null, 2));
   return (
     <>
-      <ProjectList />
+      {/* <ProjectList /> */}
       <Hero />
       <RecentPost />
       <FeaturedWorks />
@@ -46,7 +46,7 @@ const Hero = () => {
 
         <a
           href="/Saviour Eking Resume.pdf"
-          className="bg-accent text-text hover:bg-accent-dark transition-colors duration-300 self-start py-4 px-9 rounded-md"
+          className="bg-accent text-text hover:bg-primary-dark transition-colors duration-300 self-start py-4 px-9 rounded-md"
           download="Saviour_Eking_Resume.pdf"
         >
           Download Resume
