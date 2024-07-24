@@ -1,4 +1,5 @@
-import { linkedInArticles } from "./data";
+import { state } from "@/store";
+import { linkedInArticles, dummyProjects } from "./data";
 import Parser from 'rss-parser';
 // import cron from 'node-cron';
 
@@ -45,9 +46,9 @@ async function fetchHashnodeArticles() {
 
 export async function articleHandler() {
     try {
-        // const hashnodeArticles = await fetchHashnodeArticles();
-        // const allArticles = [...hashnodeArticles, ...linkedInArticles];
-        const allArticles = [...linkedInArticles];
+        const hashnodeArticles = await fetchHashnodeArticles();
+        const allArticles = [...hashnodeArticles, ...linkedInArticles];
+        // const allArticles = [...linkedInArticles];
 
         // Sort articles by date, most recent first
         allArticles.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
@@ -57,8 +58,6 @@ export async function articleHandler() {
         console.log({ error: 'Failed to fetch RSS feed' })
     }
 }
-
-// let projects = [];
 
 // async function fetchProjectsFromGithub() {
 //     const userName = process.env.GITHUB_USERNAME;
@@ -87,72 +86,80 @@ export async function articleHandler() {
 
 // cron.schedule(process.env.FETCH_INTERVAL, fetchGitProjects);
 // fetchProjectsFromGithub();
+// export let projects: any[] | null = [];
+
 export async function projectsHandler() {
     try {
         // const projects = await fetchGitProjects();
-        const projects = await fetchGitProjects();
-        projects.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-        return projects;
+        state.projects = dummyProjects.items;
+        // projects = dummyProjects.items;
+        state.projects.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+        return state.projects;
     } catch (error) {
         console.log(error, 'Failed to fetch Projects')
     }
 }
 
-// const fetchGitProjects = async () => {
-//     const userName = process.env.GITHUB_USERNAME;
-//     try {
-//         const response = await fetch(`https://api.github.com/users/${userName}/repos`);
-//         if (!response.ok) {
-//             throw new Error(`Error fetching repositories: ${response.statusText}`);
-//         }
-//         const repositories = await response.json();
-//         console.log('Repositories:', repositories);
-//     } catch (error) {
-//         console.error('Error:', error.message);
-//     }
-// };
-
 async function fetchGitProjects() {
     const userName = process.env.GITHUB_USERNAME;
     const token = process.env.GITHUB_TOKEN;
     const perPage = 100;
-    let page = 100;
     let allRepos: any[] = [];
 
-    while (true) {
-        //const response = await fetch(`https://api.github.com/search/repositories?q=user:${userName}+topic:project`;
-        // const response = await fetch(`https://api.github.com/users/${userName}/repos?per_page=${perPage}&page=${page}`
-        const response = await fetch(`https://api.github.com/search/repositories?q=user:${userName}+topic:project&per_page=${perPage}&${}`, {
-            headers: {
-                'Authorization': `token ${token}`,
-                'Accept': 'application/json'
-            },
-        })
-        // const response = await fetch(`https://api.github.com/user/${userName}/repos`, {
-        //     headers: {
-        //         Authorization: `token ${process.env.GITHUB_TOKEN}`,
-        //         'Accept': 'application/vnd.github.v3+json'
-        //     }
-        // });
+    // const response = await fetch(`https://api.github.com/search/repositories?q=user:${userName}+topic:project&per_page=${perPage}&${page}`, {
+    const response = await fetch(`https://api.github.com/search/repositories?q=user:${userName}+topic:project&per_page=${perPage}`, {
+        headers: {
+            // 'Authorization': `token ${token}`,
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json'
+        },
+    })
 
-        if (!response.ok) {
-            console.error(`GitHub API error: ${response.status} ${response.statusText}`);
-            console.error(await response.text());
-            throw new Error('Network response was not ok');
-        }
-
-        const repos = await response.json();
-        if (repos.length === 0) break;
-
-        allRepos = allRepos.concat(repos);
-        page++;
+    if (!response.ok) {
+        console.error(`GitHub API error: ${response.status} ${response.statusText}`);
+        console.error(await response.text());
+        throw new Error('Network response was not ok');
     }
 
-    // Filter repos with 'project' topic
-    return allRepos.filter(repo =>
-        repo.topics && repo.topics.includes('project')
-    );
+    const repos = await response.json();
+    console.log(repos.items, '---------------------------------\n\n\n------------------repos')
+    return repos.items;
 }
+
+// async function fetchGitProjects() {
+//     // const userName = process.env.GITHUB_USERNAME;
+//     const userName = 'TheSaviourEking';
+//     const token = process.env.GITHUB_TOKEN;
+//     const perPage = 100;
+//     let page = 1;
+//     let allResult: any[] = [];
+
+//     while (true) {
+//         const response = await fetch(`https://api.github.com/search/repositories?q=user:${userName}+topic:project&per_page=${perPage}&${page}`, {
+//             headers: {
+//                 // 'Authorization': `token ${token}`,
+//                 'Authorization': `Bearer ${token}`,
+//                 'Accept': 'application/vnd.github.v3+json'
+//             },
+//         })
+
+//         if (!response.ok) {
+//             console.error(`GitHub API error: ${response.status} ${response.statusText}`);
+//             console.error(await response.text());
+//             throw new Error('Network response was not ok');
+//         }
+
+//         const result = await response.json();
+//         // console.log(result, '------------------------------\n\n\n\n----------------------------')
+
+//         allResult = allResult.concat(result);
+//         if (result.incomplete_results === false) break;
+//         else { page++; }
+//     }
+
+//     // return allResult.reduce((acc, result) => acc.concat(result.items), []);
+//     return allResult.flatMap(result => result.items);
+// }
 
 
 
