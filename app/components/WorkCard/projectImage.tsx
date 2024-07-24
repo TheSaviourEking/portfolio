@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 const ProjectImage = ({ name }) => {
     const [imgSrc, setImgSrc] = useState(`/projects/${name.toLowerCase()}.png`);

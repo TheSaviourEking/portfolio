@@ -1,28 +1,13 @@
-// app/components/ProjectList.jsx
-'use client';
+import { projectsHandler } from "../lib/actions";
 
-import { useSelector } from 'react-redux';
+import { projects } from "../lib/actions";
 
-export default function ProjectList() {
-    // const projects = useSelector((state) => state.projects.projects);
-    // const status = useSelector((state) => state.projects.status);
-
-    const projects = useSelector((state) => {
-        console.log('Entire state:', state);
-        console.log('Projects state:', state.projects);
-        return state.projects.projects;
-    });
-
-    if (status === 'loading') {
-        return <div>Loading projects...</div>;
-    }
-
-    if (status === 'failed') {
-        return <div>Error loading projects</div>;
-    }
+export default async function ProjectList() {
+    const projects = await projectsHandler()
 
     return (
         <ul>
+            {console.log(projects)}
             {projects?.map((project) => (
                 <li key={project.id}>{project.name}</li>
             ))}

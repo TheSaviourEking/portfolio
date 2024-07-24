@@ -9,7 +9,7 @@ const WorkCard = ({ project }) => {
     return (
         <Link href={`/projects/${name}`}>
             {/* <div className='flex flex-col md:flex-row gap-10 border-b-2 p-4'> */}
-            <div className='grid grid-cols-1 md:grid-cols-2 ga border-b-2 p-4'>
+            < div className='grid grid-cols-1 md:grid-cols-2 ga border-b-2 p-4' >
                 <Image
                     className='basis-1/4 lg:basis-1/4'
                     src={`/projects/${name.toLowerCase()}.png` || `/projects/${name.toLowerCase()}.webp`}
@@ -41,8 +41,8 @@ const WorkCard = ({ project }) => {
                     </div>
                     <p>{description}</p>
                 </div>
-            </div>
-        </Link>
+            </div >
+        </Link >
     )
 }
 
