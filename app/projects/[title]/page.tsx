@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { notFound } from 'next/navigation';
 
 interface PageProps {
     params: {
@@ -12,18 +12,27 @@ async function getProject(title: string) {
     return { title, description: `This is the ${title} project` }
 }
 
-export default async function ProjectPage({ params }: PageProps) {
-    const project = await getProject(params.title)
+// export default async function ProjectPage({ params }: PageProps) {
+//     const project = await getProject(params.title)
 
-    if (!project) {
-        notFound()
-    }
+//     if (!project) {
+//         notFound()
+//     }
 
+//     return (
+//         <div>
+//             <h1>Project: {project.title}</h1>
+//             <p>{project.description}</p>
+//             {/* Add more project content here */}
+//         </div>
+//     )
+// }
+
+export default async function ProjectPage(props) {
+    console.log(props, 'props')
     return (
         <div>
-            <h1>Project: {project.title}</h1>
-            <p>{project.description}</p>
-            {/* Add more project content here */}
+            hello
         </div>
     )
 }
