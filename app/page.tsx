@@ -5,17 +5,21 @@ import ProfilePhoto from "./components/ProfilePhoto";
 import Link from "next/link";
 import PostCard from "./components/PostCard";
 import WorkCard from "./components/WorkCard";
-// import handler, { posts } from "./lib/data";
-import { articleHandler } from "./lib/actions";
-import { useEffect, useState } from "react";
-import { fetchRecentPosts, fetchRecentProjects } from "./lib/actions";
+import { articleHandler, projectsHandler } from "./lib/actions";
 import useScreenSize from "./hooks/useScreenSize";
+import ProjectList from "./components/ProjectList";
+import { makeStore } from "@/store";
+import { fetchProjects } from "@/store/projects/projectsSlice";
 
 const heebo = Heebo({ weight: ['700'], subsets: ['latin'] })
 
-export default function Home() {
+export default async function Home() {
+  const store = makeStore();
+  await store.dispatch(fetchProjects());
+  // console.log('Redux Store State:', JSON.stringify(store.getState(), null, 2));
   return (
     <>
+      <ProjectList />
       <Hero />
       <RecentPost />
       <FeaturedWorks />
@@ -35,7 +39,11 @@ const Hero = () => {
           <h1 className="text-4xl">Hello I&apos;m Saviour</h1>
           <h2 className="text-4xl">Fullstack Developer</h2>
         </div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, laboriosam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos error nihil autem consequatur ipsa illum incidunt quibusdam ea velit illo!</p>
+        <p>
+          Passionate MERN stack developer crafting efficient, user-friendly web applications.
+          Always eager to learn and take on new challenges in the world of web development.
+        </p>
+
         <a
           href="/Saviour Eking Resume.pdf"
           className="bg-accent text-text hover:bg-accent-dark transition-colors duration-300 self-start py-4 px-9 rounded-md"
@@ -73,9 +81,9 @@ const RecentPost = async () => {
               ))}
             </div>
           </div> */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {posts.map(post => (
-              <PostCard key={post.id} post={post} />
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2  gap-4">
+            {posts.slice(0, 2).map((post, i) => (
+              <PostCard key={i} post={post} />
             ))}
           </div>
           <Link className="block md:hidden text-base mt-4 md:mt-0" href="/blog">view all</Link>
@@ -85,35 +93,26 @@ const RecentPost = async () => {
   )
 };
 
-const FeaturedWorks = () => {
-  // const [recentProjects, setRecentProjects] = useState([]);
+const FeaturedWorks = async () => {
   // const isMediumOrAbove = useScreenSize();
-  // const numberOfProjectsToDisplay = isMediumOrAbove ? 3 : 1;
-
-  // useEffect(() => {
-  //   const fetchProjects = async () => {
-  //     const projects = await fetchRecentProjects();
-  //     setRecentProjects(projects);
-  //   }
-  //   fetchProjects();
-  // }, []);
+  const projects = await projectsHandler();
 
   return (
     <>
-      {/* {recentProjects && recentProjects.length > 0 && (
+      {projects && projects.length > 0 && (
         <div className="py-10">
           <div className="flex justify-between items-center">
-            <span className="text-xl">Featured {recentProjects.length === 1 ? 'Work' : 'Works'}</span>
+            <span className="text-xl">Featured {projects.length === 1 ? 'Work' : 'Works'}</span>
             <Link className="hidden md:block text-base" href="/projects">view all</Link>
           </div>
           <div className="flex flex-wrap flex-col md:flex-row items-center justify-center gap-4 mt-2">
-            {recentProjects && recentProjects.length > 0 && recentProjects.slice(0, numberOfProjectsToDisplay).map((project) => (
-              <WorkCard key={crypto.randomUUID()} project={project} />
+            {projects && projects.length > 0 && projects.slice(0, 3).map((project, i) => (
+              <WorkCard key={project.id} project={project} />
             ))}
           </div>
           <Link className="block md:hidden text-base mt-4 md:mt-0" href="/projects">view all</Link>
         </div>
-      )} */}
+      )}
     </>
   )
 }
