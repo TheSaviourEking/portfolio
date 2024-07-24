@@ -7,7 +7,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 } */
-:root {
+/* :root {
   --primary: #3498db;
   --primary-dark: #2980b9;
   --secondary: #2ecc71;
@@ -22,6 +22,19 @@
   --cta-dark: #d35400;
   --warning: #f39c12;
   --warning-dark: #f1c40f;
+} */
+
+:root {
+  --primary: #3498db;
+  --primary-dark: #2980b9;
+  --secondary: #2ecc71;
+  --secondary-dark: #27ae60;
+  --accent: #e74c3c;
+  --accent-dark: #c0392b;
+  --background: #f5f7fa;
+  --background-dark: #34495e;
+  --text: #2c3e50;
+  --text-dark: #ecf0f1;
 }
 
 .light {
@@ -40,7 +53,7 @@
   --background-end-rgb: 0, 0, 0;
 } */
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
 
   :root {
     --primary: var(--primary-dark);
@@ -48,10 +61,8 @@
     --accent: var(--accent-dark);
     --background: var(--background-dark);
     --text: var(--text-dark);
-    --cta: var(--cta-dark);
-    --warning: var(--warning-dark);
   }
-} */
+}
 
 .dark {
   --primary: var(--primary-dark);
@@ -97,4 +108,8 @@ body {
 
 .page-title {
   @apply mb-4 text-3xl font-bold md:font-black md:text-5xl md:mb-8
+}
+
+.project-links {
+  @apply p-4 bg-accent rounded-sm;
 }
