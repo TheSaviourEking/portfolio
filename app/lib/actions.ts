@@ -51,7 +51,13 @@ export async function articleHandler() {
         // const allArticles = [...linkedInArticles];
 
         // Sort articles by date, most recent first
-        allArticles.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+        // allArticles.sort((a, b) => new Date(b?.pubDate).getTime() - new Date(a?.pubDate).getTime());
+        allArticles.sort((a, b) => {
+            const dateA = new Date(a.pubDate ?? 0).getTime(); // Default to 0 if undefined
+            const dateB = new Date(b.pubDate ?? 0).getTime(); // Default to 0 if undefined
+            return dateB - dateA;
+        });
+
 
         return allArticles;
     } catch (error) {
