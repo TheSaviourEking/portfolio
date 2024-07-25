@@ -97,8 +97,9 @@ export async function articleHandler() {
 export async function projectsHandler() {
     try {
         // const projects = await fetchGitProjects();
-        state.projects = dummyProjects.items;
+        // state.projects = dummyProjects.items;
         // projects = dummyProjects.items;
+        state.projects = await fetchGitProjects();
         state.projects.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
         return state.projects;
     } catch (error) {
@@ -128,7 +129,6 @@ async function fetchGitProjects() {
     }
 
     const repos = await response.json();
-    console.log(repos.items, '---------------------------------\n\n\n------------------repos')
     return repos.items;
 }
 
