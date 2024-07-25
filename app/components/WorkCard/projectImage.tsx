@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-const ProjectImage = ({ name }) => {
+const ProjectImage = ({ name }: { name: string }) => {
     const [imgSrc, setImgSrc] = useState(`/projects/${name.toLowerCase()}.png`);
     const [hasError, setHasError] = useState(false);
 
