@@ -28,9 +28,10 @@ export default async function RootLayout({
 }>) {
   // const store = makeStore();
   // await store.dispatch(fetchProjects());
-  let store = state.projects;
+  let store: any[] = state.projects || [];
   if (store.length === 0) {
-    store = await projectsHandler()
+    const result = await projectsHandler();
+    store = result ?? [];
   }
   return (
     <html lang="en">
