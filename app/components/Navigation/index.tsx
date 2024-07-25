@@ -3,6 +3,12 @@ import React, { useState } from 'react'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+interface NavLinkProps {
+    href: string;
+    children: React.ReactNode;
+    className?: string;
+}
+
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const pathname = usePathname();
@@ -11,7 +17,7 @@ const NavBar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const NavLink = ({ href, children }) => {
+    const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
         const isActive = pathname === href;
         return (
             <Link

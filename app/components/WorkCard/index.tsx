@@ -1,9 +1,21 @@
 import { formatDate } from '@/app/lib/utils';
 import Image from 'next/image'
 import Link from 'next/link';
-import ProjectImage from './projectImage';
 
-const WorkCard = ({ project }) => {
+type WorkCardProps = {
+    project: {
+        name?: string;
+        html_url?: string;
+        description?: string;
+        created_at: string;
+        updated_at?: string;
+        pushed_at?: string;
+        homepage?: string;
+        language?: string
+    }
+}
+
+const WorkCard = ({ project }: WorkCardProps) => {
     // const { name, html_url, description, created_at, updated_at, pushed_at, homepage,language, license: { name: license_name } } = project;
     const { name, html_url, description, created_at, updated_at, pushed_at, homepage, language, } = project;
     return (
@@ -12,7 +24,7 @@ const WorkCard = ({ project }) => {
             < div className='grid grid-cols-1 md:grid-cols-2 ga border-b-2 p-4' >
                 <Image
                     className='basis-1/4 lg:basis-1/4'
-                    src={`/projects/${name.toLowerCase()}.png` || `/projects/${name.toLowerCase()}.webp`}
+                    src={`/projects/${name?.toLowerCase()}.png` || `/projects/${name?.toLowerCase()}.webp`}
                     alt='hello'
                     width={500}
                     height={400}
