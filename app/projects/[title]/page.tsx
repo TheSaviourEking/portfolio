@@ -4,22 +4,20 @@ import ProjectImage from '@/app/components/WorkCard/projectImage';
 import Image from 'next/image';
 import { projectsHandler } from '@/app/lib/actions';
 import { Metadata } from 'next';
+import ExternalLinkTag from '@/app/components/Links/externalLinkTags';
 
-export const metadata: Metadata={
+export const metadata: Metadata = {
     title: 'Projects'
-  }
-
-interface PageProps {
-    params: {
-        title: string
-    }
 }
 
-export default async function ProjectPage(props) {
+type ProjectPageProps = {
+    params: { title: string }
+}
+export default async function ProjectPage(props: ProjectPageProps) {
     const { title } = props.params;
     const projects = await projectsHandler();
-    const foundProject = projects.find(project => project.name === title);
-    console.log(foundProject, 'iiiiiiiiiiiiiiiii');
+    const foundProject = projects?.find(project => project.name === title);
+    // console.log(foundProject, 'iiiiiiiiiiiiiiiii');
 
     if (!foundProject) return (notFound());
 
@@ -36,12 +34,12 @@ export default async function ProjectPage(props) {
                 {foundProject.description}
                 <p>Main Language: {foundProject.language}</p>
                 <div className='flex w-full gap-4'>
-                    <a className='project-links' href={foundProject.homepage} target="_blank" rel="noopener noreferrer">LifeLink</a>
-                    <a className='project-links' href={foundProject.url} target="_blank" rel="noopener noreferrer">Github Repository</a>
+                    <ExternalLinkTag url={foundProject.homepage} id='disabled'title='LifeLink' />
+                    <ExternalLinkTag url={foundProject.html_url} />
                 </div>
             </div>
 
-        </div>
+        </div >
     )
 }
 //homepage
