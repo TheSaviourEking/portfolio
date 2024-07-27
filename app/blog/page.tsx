@@ -1,7 +1,12 @@
 // 'use client';
 
+import { Metadata } from 'next';
 import PostCard from '../components/PostCard'
 import { articleHandler } from '../lib/actions';
+
+export const metadata: Metadata = {
+  title: 'Blog | Saviour Eking'
+}
 
 const page = async () => {
   const allPosts = await articleHandler();
