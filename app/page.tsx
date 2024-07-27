@@ -13,7 +13,7 @@ import { state } from "@/store";
 const heebo = Heebo({ weight: ['700'], subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Home'
+  title: 'Home | Saviour Eking'
 }
 
 export default async function Home() {
