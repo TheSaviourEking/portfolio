@@ -1,6 +1,11 @@
 'use client';
 
+import { Metadata } from 'next';
 import { useState, ChangeEvent, FormEvent } from 'react';
+
+export const metadata: Metadata = {
+  title: 'Home | Saviour Eking'
+}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
