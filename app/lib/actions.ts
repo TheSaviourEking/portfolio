@@ -67,7 +67,6 @@ export async function articleHandler() {
 
 export async function projectsHandler() {
     try {
-        // const projects = await fetchGithubProjects();
         // state.projects = dummyProjects.items;
         // projects = dummyProjects.items;
         state.projects = await fetchProjectsFromGithub();
@@ -82,12 +81,11 @@ async function fetchProjectsFromGithub() {
     const userName = process.env.GITHUB_USERNAME;
     const topic = 'project';
     const perPage = 100;
+  
     const token = process.env.GITHUB_TOKEN;
-    // const user = 'thesavioureking';
-    // const url = `https://api.github.com/search/repositories?q=user:${userName}+topic:${topic}`;
     const url = `https://api.github.com/search/repositories?q=user:${userName}+topic:${topic}&per_page=${perPage}`;
     console.log('fetching----------------------------------------')
-
+  
     const headers = {
         'Authorization': `token ${token}`
     };
