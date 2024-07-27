@@ -1,7 +1,7 @@
-import { projectsHandler } from "../lib/actions";
+import { state } from "@/store";
 
 export default async function ProjectList() {
-    const projects: any[] | undefined = await projectsHandler()
+    const projects: any[] | undefined = state.projects;
 
     return (
         <ul>

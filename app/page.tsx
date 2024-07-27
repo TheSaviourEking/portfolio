@@ -5,10 +5,10 @@ import ProfilePhoto from "./components/ProfilePhoto";
 import Link from "next/link";
 import PostCard from "./components/PostCard";
 import WorkCard from "./components/WorkCard";
-import { articleHandler, projectsHandler } from "./lib/actions";
+import { articleHandler } from "./lib/actions";
 import useScreenSize from "./hooks/useScreenSize";
-import ProjectList from "./components/ProjectList";
 import { Metadata } from "next";
+import { state } from "@/store";
 
 const heebo = Heebo({ weight: ['700'], subsets: ['latin'] })
 
@@ -19,7 +19,6 @@ export const metadata: Metadata = {
 export default async function Home() {
   return (
     <>
-      {/* <ProjectList /> */}
       <Hero />
       <RecentPost />
       <FeaturedWorks />
@@ -95,7 +94,7 @@ const RecentPost = async () => {
 
 const FeaturedWorks = async () => {
   // const isMediumOrAbove = useScreenSize();
-  const projects = await projectsHandler();
+  const projects = state.projects;
 
   return (
     <>

@@ -1,14 +1,14 @@
 import React from 'react'
 import WorkCard from '../components/WorkCard'
-import { projectsHandler } from '../lib/actions';
 import { Metadata } from 'next';
+import { state } from '@/store';
 
 export const metadata: Metadata={
   title: 'Projects'
 }
 
 const page = async () => {
-  const projects = await projectsHandler();
+  const projects = state.projects;
   return (
     <>
       <h2 className='page-title'>Projects</h2>
