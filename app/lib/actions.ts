@@ -65,41 +65,11 @@ export async function articleHandler() {
     }
 }
 
-// async function fetchProjectsFromGithub() {
-//     const userName = process.env.GITHUB_USERNAME;
-//     const token = process.env.GITHUB_TOKEN;
-//     const response = await fetch(`https://api.github.com/search/repositories?q=user:${userName}+topic:project`, {
-//         headers: {
-//             'Authorization': `token ${token}`,
-//         },
-//     });
-
-//     if (!response.ok) {
-//         throw new Error('Network response was not ok');
-//     }
-
-//     const data = await response.json();
-//     console.log(data, 'data');
-//     projects = data.items;
-
-//     console.log(`Fetched ${projects.length} projects:`);
-//     projects.forEach(project => {
-//         console.log(`- ${project.name}`);
-//     });
-
-//     return data.items;
-// }
-
-// cron.schedule(process.env.FETCH_INTERVAL, fetchGitProjects);
-// fetchProjectsFromGithub();
-// export let projects: any[] | null = [];
-
 export async function projectsHandler() {
     try {
-        // const projects = await fetchGitProjects();
         // state.projects = dummyProjects.items;
         // projects = dummyProjects.items;
-        state.projects = await fetchGitProjects();
+        state.projects = await fetchProjectsFromGithub();
         state.projects.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
         return state.projects;
     } catch (error) {
@@ -107,65 +77,28 @@ export async function projectsHandler() {
     }
 }
 
-async function fetchGitProjects() {
+async function fetchProjectsFromGithub() {
     const userName = process.env.GITHUB_USERNAME;
-    const token = process.env.GITHUB_TOKEN;
+    const topic = 'project';
     const perPage = 100;
-    let allRepos: any[] = [];
+  
+    const token = process.env.GITHUB_TOKEN;
+    const url = `https://api.github.com/search/repositories?q=user:${userName}+topic:${topic}&per_page=${perPage}`;
+    console.log('fetching----------------------------------------')
+  
+    const headers = {
+        'Authorization': `token ${token}`
+    };
 
-    // const response = await fetch(`https://api.github.com/search/repositories?q=user:${userName}+topic:project&per_page=${perPage}&${page}`, {
-    const response = await fetch(`https://api.github.com/search/repositories?q=user:${userName}+topic:project&per_page=${perPage}`, {
-        headers: {
-            // 'Authorization': `token ${token}`,
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/json'
-        },
-    })
-
-    if (!response.ok) {
-        console.error(`GitHub API error: ${response.status} ${response.statusText}`);
-        console.error(await response.text());
-        throw new Error('Network response was not ok');
+    try {
+        const response = await fetch(url, { headers });
+        const data = await response.json();
+        return data.items;
+    } catch (error) {
+        console.error("Error fetching  repositories:", error);
+        return [];
     }
-
-    const repos = await response.json();
-    return repos.items;
 }
-
-// async function fetchGitProjects() {
-//     // const userName = process.env.GITHUB_USERNAME;
-//     const userName = 'TheSaviourEking';
-//     const token = process.env.GITHUB_TOKEN;
-//     const perPage = 100;
-//     let page = 1;
-//     let allResult: any[] = [];
-
-//     while (true) {
-//         const response = await fetch(`https://api.github.com/search/repositories?q=user:${userName}+topic:project&per_page=${perPage}&${page}`, {
-//             headers: {
-//                 // 'Authorization': `token ${token}`,
-//                 'Authorization': `Bearer ${token}`,
-//                 'Accept': 'application/vnd.github.v3+json'
-//             },
-//         })
-
-//         if (!response.ok) {
-//             console.error(`GitHub API error: ${response.status} ${response.statusText}`);
-//             console.error(await response.text());
-//             throw new Error('Network response was not ok');
-//         }
-
-//         const result = await response.json();
-//         // console.log(result, '------------------------------\n\n\n\n----------------------------')
-
-//         allResult = allResult.concat(result);
-//         if (result.incomplete_results === false) break;
-//         else { page++; }
-//     }
-
-//     // return allResult.reduce((acc, result) => acc.concat(result.items), []);
-//     return allResult.flatMap(result => result.items);
-// }
 
 
 

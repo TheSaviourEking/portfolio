@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import { state } from '@/store';
 import ProjectImage from '@/app/components/WorkCard/projectImage';
 import Image from 'next/image';
-import { projectsHandler } from '@/app/lib/actions';
 import { Metadata } from 'next';
 import ExternalLinkTag from '@/app/components/Links/externalLinkTags';
 
@@ -15,7 +14,7 @@ type ProjectPageProps = {
 }
 export default async function ProjectPage(props: ProjectPageProps) {
     const { title } = props.params;
-    const projects = await projectsHandler();
+    const projects = state.projects;
     const foundProject = projects?.find(project => project.name === title);
 
     if (!foundProject) return (notFound());
