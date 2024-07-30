@@ -69,9 +69,11 @@ export async function projectsHandler() {
     try {
         // state.projects = dummyProjects.items;
         // projects = dummyProjects.items;
-        state.projects = await fetchProjectsFromGithub();
-        state.projects.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-        return state.projects;
+        // state.projects = await fetchProjectsFromGithub();
+        const projects = await fetchProjectsFromGithub();
+        projects.sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+        // return state.projects;
+        return projects;
     } catch (error) {
         console.log(error, 'Failed to fetch Projects')
     }
@@ -81,11 +83,11 @@ async function fetchProjectsFromGithub() {
     const userName = process.env.GITHUB_USERNAME;
     const topic = 'project';
     const perPage = 100;
-  
+
     const token = process.env.GITHUB_TOKEN;
     const url = `https://api.github.com/search/repositories?q=user:${userName}+topic:${topic}&per_page=${perPage}`;
     console.log('fetching----------------------------------------')
-  
+
     const headers = {
         'Authorization': `token ${token}`
     };
