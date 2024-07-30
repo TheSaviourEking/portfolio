@@ -1,16 +1,15 @@
 // 'use client';
 
-import { Heebo } from "next/font/google";
 import ProfilePhoto from "./components/ProfilePhoto";
 import Link from "next/link";
 import PostCard from "./components/PostCard";
 import WorkCard from "./components/WorkCard";
-import { articleHandler } from "./lib/actions";
+import { articleHandler, projectsHandler } from "./lib/actions";
 import useScreenSize from "./hooks/useScreenSize";
 import { Metadata } from "next";
 import { state } from "@/store";
 
-const heebo = Heebo({ weight: ['700'], subsets: ['latin'] })
+import { heebo } from "./components/fonts";
 
 export const metadata: Metadata = {
   title: 'Home | Saviour Eking'
@@ -94,7 +93,8 @@ const RecentPost = async () => {
 
 const FeaturedWorks = async () => {
   // const isMediumOrAbove = useScreenSize();
-  const projects = state.projects;
+  // const projects = state.projects;
+  const projects: any = await projectsHandler();
 
   return (
     <>
@@ -105,7 +105,7 @@ const FeaturedWorks = async () => {
             <Link className="hidden md:block text-base" href="/projects">view all</Link>
           </div>
           <div className="flex flex-wrap flex-col md:flex-row items-center justify-center gap-4 mt-2">
-            {projects && projects.length > 0 && projects.slice(0, 3).map((project, i) => (
+            {projects && projects.length > 0 && projects.slice(0, 3).map((project: any) => (
               <WorkCard key={project.id} project={project} />
             ))}
           </div>
