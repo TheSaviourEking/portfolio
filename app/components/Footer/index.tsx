@@ -19,7 +19,7 @@ const Footer = () => {
                 </a>
             </div>
             <div className='font-normal flex flex-col md:flex-row md:space-between'>
-                Copyright ©{new Date().getFullYear()} All rights reserved
+                Copyright &copy; {new Date().getFullYear()} All rights reserved
             </div>
         </footer>
     )
