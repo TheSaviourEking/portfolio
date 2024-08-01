@@ -54,12 +54,6 @@ const Hero = () => {
   )
 };
 
-interface Post {
-  title: string;
-  body: string;
-  date: Date;
-  category: string;
-}
 
 const RecentPost = async () => {
   const posts = await articleHandler();
