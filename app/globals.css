@@ -113,3 +113,7 @@ body {
 .project-links {
   @apply p-4 bg-accent rounded-sm;
 }
+
+.contact-me-options {
+  @apply p-4 bg-accent rounded-sm hover:opacity-70;
+}
