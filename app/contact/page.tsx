@@ -72,7 +72,10 @@ export default function ContactPage() {
       <div className="basis-1/2 container mx-auto p-4">
         <h1 className="text-3xl font-bold mb-4">Contact Me</h1>
         {submitted ? (
-          <p className="text-green-500">Thank you for your message!</p>
+          <>
+            <p className="text-green-500">Thank you for your message!</p>
+            <p className="text-green-500">Would do well to reach back out to you ASAP!</p>
+          </>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
