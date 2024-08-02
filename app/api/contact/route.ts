@@ -15,18 +15,17 @@ export async function POST(request: Request) {
             return NextResponse.json({ message: 'All fields are required' }, { status: 400 });
         }
 
-        // Create a transporter using Outlook SMTP
-
+        // Create a transporter using Gmail SMTP
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
             auth: {
                 type: 'OAuth2',
                 user: process.env.GMAIL_EMAIL,
-                pass: process.env.GMAIL_PASSWORD,
                 clientId: process.env.CLIENT_ID,
                 clientSecret: process.env.CLIENT_SECRET,
                 refreshToken: process.env.REFRESH_TOKEN,
-                // accessToken
             },
         });
 
@@ -87,7 +86,7 @@ export async function POST(request: Request) {
         }, function (error, info) {
             if (error) throw Error(String(error));
             console.log('Email Sent Successfully');
-            console.log(info);
+            // console.log(info);
         });
         return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
     } catch (error) {
