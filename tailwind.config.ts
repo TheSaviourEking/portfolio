@@ -51,7 +51,8 @@ const config: Config = {
         background: 'var(--background)',
         text: 'var(--text)',
         cta: 'var(--cta)',
-        warning: 'var(--warning)'
+        warning: 'var(--warning)',
+        background_input: 'var(--background-input)'
       },
       width: {
         '49p': '49%', // You can name this key anything you like

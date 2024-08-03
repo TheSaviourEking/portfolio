@@ -86,7 +86,6 @@ async function fetchProjectsFromGithub() {
 
     const token = process.env.GITHUB_TOKEN;
     const url = `https://api.github.com/search/repositories?q=user:${userName}+topic:${topic}&per_page=${perPage}`;
-    console.log('fetching----------------------------------------')
 
     const headers = {
         'Authorization': `token ${token}`
