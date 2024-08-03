@@ -18,7 +18,10 @@ export default function ContactPage() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/contact', {
+      // const res = await fetch('/api/contact', {
+      const api = process.env.NODE_ENV === 'production' ? 'https://portfolio-mailer-8sx0.onrender.com' : 'http://localhost:8000';
+      console.log(api, '-----------------------API-----------------------------------')
+      const res = await fetch(`${api}/sendmail`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
