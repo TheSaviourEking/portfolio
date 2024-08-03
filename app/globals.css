@@ -35,6 +35,8 @@
   --background-dark: #34495e;
   --text: #2c3e50;
   --text-dark: #ecf0f1;
+  --background-input: #fafafa;
+  --background-input-dark: #243b53;
 }
 
 .light {
@@ -45,6 +47,7 @@
   --text: var(--text);
   --cta: var(--cta);
   --warning: var(--warning);
+  --background-input: var(--background-input);
 }
 
 /* :root {
@@ -61,6 +64,7 @@
     --accent: var(--accent-dark);
     --background: var(--background-dark);
     --text: var(--text-dark);
+    --background-input: var(--background-input-dark);
   }
 }
 
@@ -70,8 +74,10 @@
   --accent: var(--accent-dark);
   --background: var(--background-dark);
   --text: var(--text-dark);
+  --text-input: #607274;
   --cta: var(--cta-dark);
   --warning: var(--warning-dark);
+  --background-input: var(--background-input-dark);
 }
 
 body {
@@ -117,3 +123,7 @@ body {
 .contact-me-options {
   @apply p-4 bg-accent rounded-sm hover:opacity-70;
 }
+
+/* .text-input {
+  @apply
+} */

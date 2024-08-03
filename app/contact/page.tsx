@@ -20,7 +20,6 @@ export default function ContactPage() {
     try {
       // const res = await fetch('/api/contact', {
       const api = process.env.NODE_ENV === 'production' ? 'https://portfolio-mailer-8sx0.onrender.com' : 'http://localhost:8000';
-      console.log(api, '-----------------------API-----------------------------------')
       const res = await fetch(`${api}/sendmail`, {
         method: 'POST',
         headers: {
@@ -91,7 +90,7 @@ export default function ContactPage() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-background_input"
                 required
               />
             </div>
@@ -105,7 +104,7 @@ export default function ContactPage() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-background_input"
                 required
               />
             </div>
@@ -118,7 +117,7 @@ export default function ContactPage() {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-background_input"
                 rows={4}
                 required
               ></textarea>
