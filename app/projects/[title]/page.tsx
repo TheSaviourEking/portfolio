@@ -16,7 +16,7 @@ type ProjectPageProps = {
 export default async function ProjectPage(props: ProjectPageProps) {
     const { title } = props.params;
     const projects = await projectsHandler()
-    const foundProject = projects?.find(project => project.name === title);
+    const foundProject = projects?.find((project: { name: string; }) => project.name === title);
 
     if (!foundProject) return (notFound());
 
