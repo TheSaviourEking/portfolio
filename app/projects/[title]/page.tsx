@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
-import { state } from '@/store';
+import { getProjects, state } from '@/store';
 import ProjectImage from '@/app/components/WorkCard/projectImage';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import ExternalLinkTag from '@/app/components/Links/externalLinkTags';
+import { projectsHandler } from '@/app/lib/actions';
 
 export const metadata: Metadata = {
     title: 'Projects'
@@ -14,7 +15,7 @@ type ProjectPageProps = {
 }
 export default async function ProjectPage(props: ProjectPageProps) {
     const { title } = props.params;
-    const projects = state.projects;
+    const projects = await projectsHandler()
     const foundProject = projects?.find(project => project.name === title);
 
     if (!foundProject) return (notFound());
@@ -32,7 +33,7 @@ export default async function ProjectPage(props: ProjectPageProps) {
                 {foundProject.description}
                 <p>Main Language: {foundProject.language}</p>
                 <div className='flex w-full gap-4'>
-                    <ExternalLinkTag url={foundProject.homepage} id='disabled'title='LifeLink' />
+                    <ExternalLinkTag url={foundProject.homepage} id='disabled' title='LifeLink' />
                     <ExternalLinkTag url={foundProject.html_url} />
                 </div>
             </div>
