@@ -23,8 +23,8 @@ const Footer = () => {
                                 <FooterTitle className='leading-[48.96px] font-normal'>Quick Links</FooterTitle>
                                 <span>
                                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17 7.21582L6 18.2158" stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                                        <path d="M11 6.34735C11 6.34735 16.6335 5.87246 17.4885 6.72737C18.3434 7.58229 17.8684 13.2158 17.8684 13.2158" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17 7.21582L6 18.2158" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                                        <path d="M11 6.34735C11 6.34735 16.6335 5.87246 17.4885 6.72737C18.3434 7.58229 17.8684 13.2158 17.8684 13.2158" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
 
                                 </span>
