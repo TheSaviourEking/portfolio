@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: rgb(255, 255, 255);
+  --foreground: hsl(0, 0%, 9%);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: rgb(10, 10, 10);
+    --foreground: rgb(237, 237, 237);
   }
 }
 
@@ -18,4 +18,11 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  section {
+    @apply py-3 px-4 lg:py-6 lg:px-[196px]
+    /* 'py-[24px] px-[16px] lg:px-[196px] lg:py-[44px] */
+  }
 }
