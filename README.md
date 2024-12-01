@@ -1,125 +1,36 @@
-# My Portfolio Website
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Welcome to my portfolio repository! This project is a showcase of my skills, projects, and journey as a full-stack developer. Built with **Next.js**, this portfolio highlights my proficiency in modern web technologies and my passion for creating dynamic and responsive web applications.
+## Getting Started
 
-## 🌟 Project Overview
+First, run the development server:
 
-This portfolio website serves as a central hub for my professional presence online. It includes sections for my latest projects, a detailed resume, a blog where I share insights and experiences, and a contact form to get in touch with me.
-
-## 🚀 Features
-
-- **Dynamic Project Showcase:** Displays my projects with live demos, detailed descriptions, and links to source code.
-- **Interactive Resume:** A comprehensive and interactive resume detailing my skills, experiences, and education.
-- **Blog Section:** Articles and posts sharing knowledge, experiences, and tutorials on various tech topics.
-- **Responsive Design:** Ensures an optimal viewing experience on all devices, from desktops to mobile phones.
-- **Contact Form:** Easy way for visitors to get in touch with me directly through the site.
-
-## 🛠️ Technologies Used
-
-- **Frontend:** Next.js, React, Tailwind CSS, SCSS
-- **Backend:** Node.js, Express
-- **Database:** MongoDB
-- **Deployment:** Vercel
-- **Tools:** Git, VS Code, Postman
-
-## 📸 Screenshots
-
-![Home Page](https://link-to-screenshot.com/homepage.png)
-![Projects Page](https://link-to-screenshot.com/projects.png)
-![Blog Page](https://link-to-screenshot.com/blog.png)
-![Contact Page](https://link-to-screenshot.com/contact.png)
-
-## 📚 Project Structure
-
-```
-my-portfolio/
-.
-├── app
-│   ├── blog
-│   │   └── page.tsx
-│   ├── components
-│   │   ├── fonts.ts
-│   │   ├── Footer.jsx
-│   │   │   └── index.tsx
-│   │   ├── Navigation
-│   │   │   └── index.tsx
-│   │   ├── PostCard
-│   │   │   └── index.tsx
-│   │   ├── ProfilePhoto
-│   │   │   └── index.tsx
-│   │   └── WorkCard
-│   │       └── index.tsx
-│   ├── contact
-│   │   └── page.tsx
-│   ├── favicon.ico
-│   ├── globals.css
-│   ├── _images
-│   │   └── profile-photo-square.jpeg
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── project
-│       └── page.tsx
-├── LICENSE
-├── next.config.mjs
-├── next-env.d.ts
-├── package.json
-├── pnpm-lock.yaml
-├── postcss.config.mjs
-├── public
-│   ├── profile-photo-square.jpeg
-│   ├── Saviour Eking Resume.pdf
-├── README.md
-├── tailwind.config.ts
-└── tsconfig.json
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## 💡 Getting Started
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-To get a local copy up and running, follow these steps:
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/TheSaviourEKing/portfolio.git
-   ```
-2. **Navigate to the project directory:**
-   ```bash
-   cd portfolio
-   ```
-3. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-4. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-5. Open your browser and navigate to `http://localhost:3000`
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 🚧 Roadmap
+## Learn More
 
-- [ ] Add more blog posts
-- [ ] Implement dark mode
-- [ ] Enhance accessibility features
-- [ ] Integrate third-party services (e.g., Mailchimp for newsletters)
-- [ ] Add animations and micro-interactions for better UX
+To learn more about Next.js, take a look at the following resources:
 
-## 🤝 Contributing
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Contributions are welcome! If you have any suggestions or improvements, feel free to create an issue or submit a pull request. Please ensure that your changes align with the project's coding standards and practices.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## 📄 License
+## Deploy on Vercel
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## 📬 Contact
-
-Feel free to reach out to me for any questions, collaborations, or freelance opportunities:
-- **Email:** saviour.eking@outlook.com
-- **LinkedIn:** [Saviour Eking](https://www.linkedin.com/in/saviour-eking/)
-- **GitHub:** [thesavioureking](https://github.com/thesavioureking)
-
----
-
-Thank you for checking out my portfolio repository! I hope you find my work interesting and inspiring. 🚀
-
----
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

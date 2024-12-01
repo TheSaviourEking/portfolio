@@ -1,36 +1,26 @@
 {
-  "name": "my-portfolio",
+  "name": "portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "5.17.0",
-    "framer-motion": "^11.3.12",
-    "gsap": "^3.12.5",
-    "next": "14.2.5",
-    "nodemailer": "^6.9.14",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-icons": "^5.2.1",
-    "react-redux": "^9.1.2",
-    "rss-parser": "^3.13.0",
-    "sharp": "^0.33.4"
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "next": "15.0.3"
   },
   "devDependencies": {
+    "typescript": "^5",
     "@types/node": "^20",
-    "@types/nodemailer": "^6.4.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5",
     "postcss": "^8",
-    "prisma": "^5.17.0",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "eslint": "^8",
+    "eslint-config-next": "15.0.3"
   }
 }
