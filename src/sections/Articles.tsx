@@ -2,7 +2,7 @@ import SectionHeading from '@/components/SectionHeading'
 import Button from '@/components/ui/Button'
 import React from 'react'
 
-const Articles = () => {
+const Articles = ({ page = 'home' }: { page: 'home' | 'blogs' }) => {
     return (
         <section>
             <div className="container">

@@ -11,7 +11,7 @@ export default function Home() {
       <TechStack />
       <Projects page='home' />
       <WorkExperience />
-      <Articles />
+      <Articles page="home" />
     </>
   );
 }
