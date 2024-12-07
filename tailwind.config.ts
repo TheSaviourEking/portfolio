@@ -24,6 +24,9 @@ export default {
         foreground: "rgb(var(--foreground) / <alpha>)", // Same here
         primary: '#A1CD59'
       },
+      animation: {
+        spin: 'spin 2s linear infinite',
+      },
     },
   },
   plugins: [],

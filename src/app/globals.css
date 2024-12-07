@@ -26,3 +26,33 @@ body {
     /* 'py-[24px] px-[16px] lg:px-[196px] lg:py-[44px] */
   }
 }
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes path {
+  0%, 34%, 71%, 100% {
+    transform: scale(1);
+  }
+  17% {
+    transform: scale(1.2);
+  }
+  49% {
+    transform: scale(1.2);
+  }
+  83% {
+    transform: scale(1.2);
+  }
+}
+
+/* Then you can use these animations in your CSS */
+.dots-border::before {
+  animation: rotate 2s linear infinite;
+}
+
+.sparkle-path {
+  animation: path 1.5s linear 0.5s infinite;
+}

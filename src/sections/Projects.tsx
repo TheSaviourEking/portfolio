@@ -35,9 +35,14 @@ const Projects = ({ page = 'home' }: { page?: 'home' | 'projects' }) => {
                     {/* <div className='p-3 flex flex-col md:flex-row gap-6 aspect-video h-[346px] justify-center items-center flex-wrap bg-purple-200'> */}
                     <div className='p-3 flex flex-col md:flex-row gap-6 aspect-video justify-center items-center md:flex-wrap bg-purple-200'>
                         {Array.from({ length: 4 }).slice(0, visibleItems).map(((item, i) => (
-                            <div key={i} className='relative w-full md:w-[300px]  lg:w-[366px] h-[330px] rounded-2xl bg-pink-300'>
-                                <Image src={projectImage} alt='project image' fill className='rounded-2xl' style={{ objectFit: 'cover', objectPosition: 'center' }} />
-                            </div>
+                            <div key={i} className="aspect-video w-full md:aspect-auto md:w-[300px] lg:w-[366px] md:h-[330px] relative rounded-2xl bg-pink-300">
+                            <Image
+                                src={projectImage}
+                                alt='project image'
+                                fill
+                                className='rounded-2xl object-cover object-center'
+                            />
+                        </div>
                         )))}
                     </div>
 
