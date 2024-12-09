@@ -1,19 +1,31 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import {GFS_Neohellenic} from 'next/font/google';
+
 import "./globals.css";
+
 import Navbar from "@/sections/Navbar";
 import Footer from "@/sections/Footer";
 
 const geistSans = localFont({
-  src: "../fonts/GeistVF.woff",
+  src: "../../public//fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 const geistMono = localFont({
-  src: "../fonts/GeistMonoVF.woff",
+  src: "../../public/fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const gfsNeohellenic = GFS_Neohellenic(
+ {
+   weight: ['400', '700'],
+   style:['normal','italic'],
+   display:'swap',
+   subsets:['greek'],
+   variable:'--font-neohellenic'
+ }
+)
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,7 +40,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${gfsNeohellenic.className} antialiased`}
       >
         <Navbar />
         <main>

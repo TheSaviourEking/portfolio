@@ -10,11 +10,10 @@ const navLinks = [
 
 const Navbar = () => {
     return (
-        // <section className='py-[24px] px-[16px] lg:px-[196px] lg:py-[44px]'>
-        <section className='py-[24px] px-[16px] lg:px-[196px] lg:py-[44px]'>
-            <div className='container'>
+        <section className='py-10'>
+            <div className='md:container'>
                 <div className='grid grid-cols-2 items-center'>
-                    <div>Logo</div>
+                    <div className='pl-6 font-neohellenic text-2xl italic'>Saviour</div>
                     <div className="hidden lg:flex justify-end">
                         <nav className="flex gap-6 font-medium">
                             {navLinks.map(navLink => (

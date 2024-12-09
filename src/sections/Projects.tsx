@@ -27,27 +27,27 @@ const Projects = ({ page = 'home' }: { page?: 'home' | 'projects' }) => {
     };
 
     return (
-        <section>
-            <div className="container">
+        <section className='py-0'>
+            <div className="md:container">
                 <div className='flex flex-col gap-8'>
                     <SectionHeading>My Projects</SectionHeading>
 
                     {/* <div className='p-3 flex flex-col md:flex-row gap-6 aspect-video h-[346px] justify-center items-center flex-wrap bg-purple-200'> */}
-                    <div className='p-3 flex flex-col md:flex-row gap-6 aspect-video justify-center items-center md:flex-wrap bg-purple-200'>
+                    <div className='flex flex-col md:flex-row gap-6 justify-center items-center md:flex-wrap'>
                         {Array.from({ length: 4 }).slice(0, visibleItems).map(((item, i) => (
-                            <div key={i} className="aspect-video w-full md:aspect-auto md:w-[300px] lg:w-[366px] md:h-[330px] relative rounded-2xl bg-pink-300">
-                            <Image
-                                src={projectImage}
-                                alt='project image'
-                                fill
-                                className='rounded-2xl object-cover object-center'
-                            />
-                        </div>
+                            <div key={i} className="h-[330px] w-full md:aspect-auto md:w-[300px] lg:w-[366px] md:h-[330px] relative rounded-2xl">
+                                <Image
+                                    src={projectImage}
+                                    alt='project image'
+                                    fill
+                                    className='rounded-2xl object-cover object-center'
+                                />
+                            </div>
                         )))}
                     </div>
 
                     {page === 'home' && (<div>
-                        <Button>View All</Button>
+                        {/* <Button>View All</Button> */}
                     </div>)}
 
 

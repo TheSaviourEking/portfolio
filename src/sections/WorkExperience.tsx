@@ -5,9 +5,9 @@ import React from 'react'
 const WorkExperience = () => {
     return (
         <section>
-            <div className="container">
+            <div className="md:container py-5">
+                    {/* <SectionHeading>Work Experience</SectionHeading> */}
                 <div className="flex flex-col gap-6">
-                    <SectionHeading>Work Experience</SectionHeading>
 
                     <div className='aspect-video bg-orange-700'>
 

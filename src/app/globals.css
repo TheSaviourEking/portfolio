@@ -27,6 +27,12 @@ body {
   }
 }
 
+/* @layer utilities {
+  .container {
+    @apply sm:px-0
+  }
+} */
+
 @keyframes rotate {
   to {
     transform: rotate(360deg);

@@ -27,6 +27,9 @@ export default {
       animation: {
         spin: 'spin 2s linear infinite',
       },
+      fontFamily: {
+        neohellenic: '---font-neohellenic'
+      }
     },
   },
   plugins: [],
