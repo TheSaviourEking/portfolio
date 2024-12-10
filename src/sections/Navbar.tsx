@@ -13,7 +13,9 @@ const Navbar = () => {
         <section className='py-10'>
             <div className='md:container'>
                 <div className='grid grid-cols-2 items-center'>
-                    <div className='pl-6 font-neohellenic text-2xl italic'>Saviour</div>
+                    <div className='pl-6 font-neohellen text-2xl italic'>
+                        <p>Saviour</p>
+                    </div>
                     <div className="hidden lg:flex justify-end">
                         <nav className="flex gap-6 font-medium">
                             {navLinks.map(navLink => (

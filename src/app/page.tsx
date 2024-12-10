@@ -11,7 +11,7 @@ export default function Home() {
       <TechStack />
       <Projects page='home' />
       <WorkExperience />
-      <Articles page="home" />
+      <Articles className='py-8' page="home" />
     </>
   );
 }
