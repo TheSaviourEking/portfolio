@@ -1,21 +1,12 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { GFS_Neohellenic } from 'next/font/google';
 
 import "./globals.css";
 
 import Navbar from "@/sections/Navbar";
 import Footer from "@/sections/Footer";
+import { gfsNeohellenic } from "./fonts";
+import { getProjects } from "@/lib/actions/projects";
 
-const gfsNeohellenic = GFS_Neohellenic(
-  {
-    weight: ['400', '700'],
-    style: ['normal', 'italic'],
-    display: 'swap',
-    subsets: ['greek'],
-    variable: '--font-neohellenic'
-  }
-)
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,15 +18,19 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  'use server'
 
-  const response = await fetch('https://api.github.com/users/YOUR_USERNAME/repos', {
-    headers: {
-      Authorization: `token ${process.env.GITHUB_TOKEN}`,
-    },
-    next: { revalidate: 60 }, // ISR
-  });
+  // const response = await fetch('https://api.github.com/users/YOUR_USERNAME/repos', {
+  //   headers: {
+  //     Authorization: `token ${process.env.GITHUB_TOKEN}`,
+  //   },
+  //   next: { revalidate: 60 }, // ISR
+  // });
 
-  const projects = await response.json();
+  // const projects = await response.json();
+
+  const projects = await getProjects();
+  console.log(projects)
 
   return (
     <html lang="en">
