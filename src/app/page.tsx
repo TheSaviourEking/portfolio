@@ -4,7 +4,8 @@ import Projects from "@/sections/Projects";
 import TechStack from "@/sections/TechStack";
 import WorkExperience from "@/sections/WorkExperience";
 
-export default function Home() {
+export default async function Home() {
+
   return (
     <>
       <Hero />

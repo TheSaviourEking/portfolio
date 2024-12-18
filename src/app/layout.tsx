@@ -5,7 +5,6 @@ import "./globals.css";
 import Navbar from "@/sections/Navbar";
 import Footer from "@/sections/Footer";
 import { gfsNeohellenic } from "./fonts";
-import { getProjects } from "@/lib/actions/projects";
 
 
 export const metadata: Metadata = {
@@ -19,18 +18,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   'use server'
-
-  // const response = await fetch('https://api.github.com/users/YOUR_USERNAME/repos', {
-  //   headers: {
-  //     Authorization: `token ${process.env.GITHUB_TOKEN}`,
-  //   },
-  //   next: { revalidate: 60 }, // ISR
-  // });
-
-  // const projects = await response.json();
-
-  const projects = await getProjects();
-  console.log(projects)
 
   return (
     <html lang="en">
