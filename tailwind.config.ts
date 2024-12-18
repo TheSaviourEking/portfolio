@@ -20,9 +20,10 @@ export default {
       colors: {
         // background: "var(--background)",
         // foreground: "var(--foreground)",
-        background: "rgb(var(--background) / <alpha>)", // Use RGB syntax with opacity support
+        // background: "rgb(var(--background) / <alpha>)", // Use RGB syntax with opacity support
         foreground: "rgb(var(--foreground) / <alpha>)", // Same here
-        primary: '#A1CD59'
+        primary: '#A1CD59',
+        background: '#172343'
       },
       animation: {
         spin: 'spin 2s linear infinite',
