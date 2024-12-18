@@ -3,32 +3,23 @@
 const userName = process.env.GITHUB_USERNAME;
 const token = process.env.GITHUB_TOKEN;
 
-// export const getProjects = async () => {
-//     const response = await fetch(`https://api.github.com/users/${userName}/repos`, {
-//         headers: {
-//             Authorization: `token ${process.env.GITHUB_TOKEN}`,
-//         },
-//         next: { revalidate: 60 }, // ISR
-//     });
-
-//     const projects = await response.json();
-// }
-
-export const getProjects = async () => {
+export const getProjects = async (perPage = 100) => {
     const userName = process.env.GITHUB_USERNAME;
-    const topic = 'project';
-    const perPage = 100;
+    const topic = 'portfolio';
+    const topic2 = 'project';
 
     const token = process.env.GITHUB_TOKEN;
-    const url = `https://api.github.com/search/repositories?q=user:${userName}+topic:${topic}&per_page=${perPage}`;
+    const url = `https://api.github.com/search/repositories?q=user:${userName}+topic:${topic},${topic2}+fork:true&per_page=${perPage}`;
 
     const headers = {
         'Authorization': `token ${token}`
     };
 
     try {
-        const response = await fetch(url, { headers, next: { revalidate: 60 } });
+        const response = await fetch(url, { headers, next: { revalidate: 86400 } }); // 86400 === 1 day
         const data = await response.json();
+        data.items.sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+
         return data.items;
     } catch (error) {
         console.error("Error fetching  repositories:", error);
