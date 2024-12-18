@@ -4,7 +4,7 @@ import React from 'react'
 const navLinks = [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
-    { label: "Blogs", href: "/blogs" },
+    { label: "Artlcles", href: "/articles" },
     // { label: "FAQs", href: "#faqs" },
 ];
 
