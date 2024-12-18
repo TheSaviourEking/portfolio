@@ -13,3 +13,15 @@ export function capitalize(str: string) {
 export function capitalizeWords(str: string) {
     return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 }
+
+export function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+
+    const options: Intl.DateTimeFormatOptions = {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+    };
+
+    return new Intl.DateTimeFormat('en-US', options).format(date);
+}
