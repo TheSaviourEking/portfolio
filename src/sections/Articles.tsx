@@ -1,18 +1,18 @@
 import SectionHeading from '@/components/SectionHeading'
-import Button from '@/components/ui/Button'
+import { ViewAllButton } from '@/components/ViewAllButton'
 import { getArticles } from '@/lib/actions/articles'
 import { formatDate } from '@/lib/utils'
 import React from 'react'
 
 interface Article {
-    pubDate?:string,
-    title?:string,
-    content?:string,
-    link?:string,
+    pubDate?: string,
+    title?: string,
+    content?: string,
+    link?: string,
 }
 
 const Articles = async ({ page = 'home', className }: { page: 'home' | 'blogs', className?: string }) => {
-    const articles:Article[] = await getArticles();
+    const articles: Article[] = await getArticles();
 
     return (
         <section>
@@ -44,7 +44,7 @@ const Articles = async ({ page = 'home', className }: { page: 'home' | 'blogs', 
                                     </div>
                                 ))}
                                 {!articles.length && (
-                                    <div>Couldn't fetch articles at this time</div>
+                                    <div>Couldn&apos;t fetch articles at this time</div>
                                 )}
                             </>
                         )}
@@ -71,7 +71,7 @@ const Articles = async ({ page = 'home', className }: { page: 'home' | 'blogs', 
                                     </div>
                                 ))}
                                 {!articles.length && (
-                                    <div>Couldn't fetch articles at this time</div>
+                                    <div>Couldn&apos;t fetch articles at this time</div>
                                 )}
                             </>
                         )}
@@ -79,7 +79,7 @@ const Articles = async ({ page = 'home', className }: { page: 'home' | 'blogs', 
 
                     {page === 'home' && (
                         <div className="flex items-center">
-                            <Button>View All</Button>
+                            <ViewAllButton disabled={!articles.length} to='/articles' />
                         </div>
                     )}
                 </div>

@@ -1,8 +1,5 @@
 'use server'
 
-const userName = process.env.GITHUB_USERNAME;
-const token = process.env.GITHUB_TOKEN;
-
 export const getProjects = async (perPage = 100) => {
     const userName = process.env.GITHUB_USERNAME;
     const topic = 'portfolio';
@@ -18,7 +15,7 @@ export const getProjects = async (perPage = 100) => {
     try {
         const response = await fetch(url, { headers, next: { revalidate: 86400 } }); // 86400 === 1 day
         const data = await response.json();
-        data.items.sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+        data.items.sort((a: Project, b: Project) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
         return data.items;
     } catch (error) {

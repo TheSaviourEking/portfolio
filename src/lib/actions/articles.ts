@@ -24,15 +24,14 @@ export async function getArticles() {
 
         // Sort articles by date, most recent first
         allArticles.sort((a, b) => {
-            const dateA = new Date(a.pubDate ?? 0).getTime(); // Default to 0 if undefined
-            const dateB = new Date(b.pubDate ?? 0).getTime(); // Default to 0 if undefined
+            const dateA = new Date(a.pubDate ?? 0).getTime(); 
+            const dateB = new Date(b.pubDate ?? 0).getTime(); 
             return dateB - dateA;
         });
 
-
         return allArticles;
     } catch (error) {
-        console.log({ error: 'Failed to fetch RSS feed' })
+        console.error("Error fetching  repositories:", error);
         return [];
     }
 }

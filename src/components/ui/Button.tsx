@@ -14,18 +14,25 @@ const buttonClasses = cva(
                 md: '',
                 lg: ''
             },
-            defaultVariants: {
-                variant: 'primary',
-                size: 'md'
+            disabled: {
+                true: 'opacity-50 cursor-not-allowed',
+                false: 'opacity-100 cursor-pointer'
             }
+        },
+        defaultVariants: {
+            variant: 'primary',
+            size: 'md',
+            disabled: false
         }
     }
 )
 
-const Button = ({ className, children, variant = 'primary', size = 'md', ...otherProps }: { className?: string, children: string, variant?: 'primary' | 'secondary', size?: 'sm' | 'md' | 'lg' } & ButtonHTMLAttributes<HTMLButtonElement>) => {
+const Button = ({ className, disabled, children, variant = 'primary', size = 'md', ...otherProps }: { className?: string, children: string, variant?: 'primary' | 'secondary', size?: 'sm' | 'md' | 'lg' } & ButtonHTMLAttributes<HTMLButtonElement>) => {
     return (
-        <button className={buttonClasses({ variant, className, size })} {...otherProps}>{children}</button>
+        <button className={buttonClasses({ variant, className, size, disabled })} disabled={disabled}
+        {...otherProps}>{children}</button>
     )
 }
+
 
 export default Button
