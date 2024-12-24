@@ -1,15 +1,15 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-    firstName: 'Selene',
-    lastName:  'Yu',
+    firstName: 'Saviour',
+    lastName:  'Eking',
     get name() {
         return `${this.firstName} ${this.lastName}`;
     },
-    role:      'Design Engineer',
+    role:      'Software Development Engineer SDE',
     avatar:    '/images/avatar.jpg',
-    location:  'Asia/Jakarta',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-    languages: ['English', 'Bahasa']  // optional: Leave the array empty if you don't want to display languages
+    location:  'Africa/Lagos',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    languages: ['English']  // optional: Leave the array empty if you don't want to display languages
 }
 
 const newsletter = {
@@ -24,22 +24,22 @@ const social = [
     {
         name: 'GitHub',
         icon: 'github',
-        link: 'https://github.com/once-ui-system/nextjs-starter',
+        link: 'https://github.com/TheSaviourEking',
     },
     {
         name: 'LinkedIn',
         icon: 'linkedin',
-        link: 'https://www.linkedin.com/company/once-ui/',
+        link: 'https://www.linkedin.com/saviour-eking',
     },
     {
         name: 'X',
         icon: 'x',
-        link: '',
+        link: 'https://x.com/TheSaviourEking',
     },
     {
         name: 'Email',
         icon: 'email',
-        link: 'mailto:example@gmail.com',
+        link: 'mailto:saviour.eking@cyberservices.com',
     },
 ]
 
@@ -47,8 +47,8 @@ const home = {
     label: 'Home',
     title: `${person.name}'s Portfolio`,
     description: `Portfolio website showcasing my work as a ${person.role}`,
-    headline: <>Design engineer and builder</>,
-    subline: <>I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive<br/> user experiences. After hours, I build my own projects.</>
+    headline: <>Software engineer and builder</>,
+    subline: <>I'm Saviour, a full-stack developer passionate about creating intuitive web applications. By day, I build impactful solutions, and by night, I work on personal projects that push my skills further.</>
 }
 
 const about = {
@@ -69,7 +69,7 @@ const about = {
     intro: {
         display: true,
         title: 'Introduction',
-        description: <>Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology.</>
+        description: <>Saviour is a Nigeria-based full-stack developer with a knack for transforming complex problems into seamless, user-friendly solutions. His expertise spans web development, interactive applications, and the intersection of technology and design.</>
     },
     work: {
         display: true, // set to false to hide this section
@@ -109,13 +109,17 @@ const about = {
         title: 'Studies',
         institutions: [
             {
-                name: 'University of Jakarta',
-                description: <>Studied software engineering.</>,
+                name: 'App Academy Open',
+                description: <>Studied Fullstack software engineering.</>,
             },
-            {
-                name: 'Build the Future',
-                description: <>Studied online marketing and personal branding.</>,
-            }
+            // {
+            //     name: 'University of Jakarta',
+            //     description: <>Studied software engineering.</>,
+            // },
+            // {
+            //     name: 'Build the Future',
+            //     description: <>Studied online marketing and personal branding.</>,
+            // }
         ]
     },
     technical: {
