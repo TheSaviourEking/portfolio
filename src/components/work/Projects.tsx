@@ -15,13 +15,10 @@ export function Projects({ range, locale }: ProjectsProps) {
         return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
     });
 
-    console.log(sortedProjects, 'SORTED PROJECTS')
-
     const displayedProjects = range
         ? sortedProjects.slice(range[0] - 1, range[1] ?? sortedProjects.length)
         : sortedProjects;
-        
-    console.log(displayedProjects, 'DISPLAYED PROJECTS')
+
     return (
         <Flex
             fillWidth gap="xl" marginBottom="40" paddingX="l"
