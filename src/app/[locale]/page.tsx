@@ -147,7 +147,8 @@ export default function Home(
 				</Flex>
 			)} */}
 
-			<Projects range={[1, -1]} locale={locale} />
+			<Projects range={[2]} locale={locale} />
+			
 			{newsletter.display &&
 				<Mailchimp newsletter={newsletter} />
 			}
