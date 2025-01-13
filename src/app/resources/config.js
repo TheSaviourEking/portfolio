@@ -1,4 +1,4 @@
-const baseURL = 'demo.magic-portfolio.com'
+const baseURL = 'savioureking.vercel.app'; // Set your domain here
 
 // Enable localization
 const i18n = false;

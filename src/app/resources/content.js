@@ -80,8 +80,8 @@ const about = {
                 timeframe: '2024 - Present',
                 role: 'Finding Team Member and Software Development Engineer',
                 achievements: [
-                    <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
-                    <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
+                    // <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
+                    // <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
                 ],
                 images: [ // optional: leave the array empty if you don't want to display images
                     // {
@@ -97,8 +97,8 @@ const about = {
                 timeframe: '2024 - Present',
                 role: 'Full Stack Web Development Instructor and Facility Manager',
                 achievements: [
-                    <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
-                    <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
+                    // <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
+                    // <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
                 ],
                 images: [ // optional: leave the array empty if you don't want to display images
                     // {
@@ -108,7 +108,41 @@ const about = {
                     //     height: 9
                     // }
                 ]
-            }
+            },
+            {
+                company: 'Blockmay ICT Solutions',
+                timeframe: '2022',
+                role: "Frontend Web Developer Trainee",
+                achievements: [
+                    // <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
+                    // <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
+                ],
+                images: [ // optional: leave the array empty if you don't want to display images
+                    // {
+                    //     src: '/images/projects/project-01/cover-01.jpg',
+                    //     alt: 'Once UI Project',
+                    //     width: 16,
+                    //     height: 9
+                    // }
+                ]
+            },
+            {
+                company: 'CodeCamp',
+                timeframe: '2022',
+                role: 'Django Developer Trainee (Google/Andela for Africa Scholarship)',
+                achievements: [
+                    // <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
+                    // <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
+                ],
+                images: [ // optional: leave the array empty if you don't want to display images
+                    // {
+                    //     src: '/images/projects/project-01/cover-01.jpg',
+                    //     alt: 'Once UI Project',
+                    //     width: 16,
+                    //     height: 9
+                    // }
+                ]
+            },
         ]
     },
     studies: {
@@ -338,7 +372,7 @@ const about = {
 
 const blog = {
     label: 'Blog',
-    title: 'Writing about design and tech...',
+    title: 'Writing about tech, my journey and growth...',
     description: `Read what ${person.name} has been up to recently`
     // Create new blog posts by adding a new .mdx file to app/blog/posts
     // All posts will be listed on the /blog route
